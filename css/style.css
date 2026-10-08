@@ -308,3 +308,4 @@ section.alt .nums div{background:var(--cream)}
 #learn .lbox li .nb{display:inline-block}
 @media(max-width:860px){#learn .learn{grid-template-columns:1fr}#learn .lcycle{order:-1}}
 #learn .lh-ttl{text-wrap:balance;line-break:strict}
+#learn .lbox li{letter-spacing:.01em}
