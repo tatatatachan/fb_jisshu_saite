@@ -346,3 +346,4 @@ section.alt .nums div{background:var(--cream)}
 
 section[id],h2[id],h3[id]{scroll-margin-top:84px}
 .menupanel{overscroll-behavior:contain}
+.jpp{display:inline-block;max-width:100%;vertical-align:baseline}

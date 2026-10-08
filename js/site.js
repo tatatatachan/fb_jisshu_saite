@@ -120,3 +120,44 @@ function fillFac(id,n){
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.08,rootMargin:"0px 0px -6% 0px"});
   els.forEach(e=>{if(e.getBoundingClientRect().bottom<0)e.classList.add("in");else io.observe(e);});
 })();
+
+// 日本語の改行：文節の途中で切れないようにまとめる（ブラウザの日本語分かち書きを使用）
+(function(){
+  if(!window.Intl||!Intl.Segmenter) return;
+  const seg=new Intl.Segmenter("ja",{granularity:"word"});
+  const SKIP="script,style,textarea,select,option,code,pre,svg,.jpw,.fun,[data-nojp]";
+  const hira=c=>/[ぁ-ゟ]/.test(c);
+  const closeP=/^[、。，．）」』】〕〉》！？!?：；,.)\]・ー〜~]/;
+  const openP=/[（「『【〔〈《(\[]$/;
+  function tokens(t){
+    const out=[];let cur="";
+    const flush=()=>{if(cur){out.push({t:cur});cur="";}};
+    for(const {segment:s} of seg.segment(t)){
+      if(!/\S/.test(s)){flush();out.push({t:s,sp:true});continue;}
+      if(!cur){cur=s;continue;}
+      const last=cur[cur.length-1];
+      const startsContent=!hira(s[0])&&!closeP.test(s);
+      if(startsContent&&!openP.test(cur)&&(hira(last)||closeP.test(last)))flush();
+      cur+=s;
+    }
+    flush();return out;
+  }
+  function wrap(root){
+    const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(n){
+      if(n.nodeValue.length<2||!/[぀-ヿ一-鿿]/.test(n.nodeValue))return NodeFilter.FILTER_REJECT;
+      const p=n.parentElement;return p&&!p.closest(SKIP)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;}});
+    const list=[];while(w.nextNode())list.push(w.currentNode);
+    list.forEach(n=>{
+      const box=document.createElement("span");box.className="jpw";
+      tokens(n.nodeValue).forEach(k=>{
+        if(k.sp){box.appendChild(document.createTextNode(k.t));return;}
+        const s=document.createElement("span");s.className="jpp";s.textContent=k.t;box.appendChild(s);});
+      n.replaceWith(box);
+    });
+  }
+  let busy=false,q=false;
+  const run=()=>{if(busy)return;busy=true;try{wrap(document.body);}finally{busy=false;}};
+  const sched=()=>{if(q)return;q=true;requestAnimationFrame(()=>{q=false;run();});};
+  const start=()=>{run();new MutationObserver(ms=>{if(ms.some(m=>[...m.addedNodes].some(a=>!(a.classList&&(a.classList.contains("jpw")||a.classList.contains("jpp"))))))sched();}).observe(document.body,{childList:true,subtree:true});};
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",()=>setTimeout(start,0));else setTimeout(start,0);
+})();
