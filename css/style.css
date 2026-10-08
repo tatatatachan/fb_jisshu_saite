@@ -221,3 +221,9 @@ section.alt .nums div{background:var(--cream)}
 @keyframes fabrun{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-7px) rotate(3deg)}}
 @media(max-width:640px){.fab .fabrun{width:76px;margin-left:-38px;top:-40px}.fab .fabtx{margin-top:26px}}
 @media(prefers-reduced-motion:reduce){.fab .fabrun{animation:none}}
+/* TOP：文字が弾んで登場 */
+.fun .ch{display:inline-block;font-style:normal;opacity:0;animation:chpop .9s cubic-bezier(.2,1.4,.4,1) both;transform-origin:50% 100%}
+.fun .sp{display:inline-block;width:.3em;font-style:normal}
+@keyframes chpop{0%{opacity:0;transform:translateY(70px) scale(.5) rotate(-12deg)}55%{opacity:1;transform:translateY(-14px) scale(1.12) rotate(4deg)}80%{transform:translateY(3px) scale(.97) rotate(-1deg)}100%{opacity:1;transform:none}}
+.eb-in{animation:ebin .8s ease .2s both}
+@keyframes ebin{from{opacity:0;letter-spacing:.6em}to{opacity:1;letter-spacing:.3em}}

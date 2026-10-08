@@ -90,3 +90,17 @@ function fillFac(id,n){
   });
   window.addEventListener("pageshow", () => document.documentElement.classList.remove("leaving"));
 })();
+
+// TOP：FUN LIFE! FUN LOCAL! を、ひと文字ずつ弾むように登場させる
+(function(){
+  const fun = document.querySelector(".fun");
+  if (!fun || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+  let n = 0;
+  fun.querySelectorAll(":scope > span").forEach(line => {
+    const t = line.textContent;
+    line.setAttribute("aria-label", t);
+    line.innerHTML = [...t].map(ch => ch === " " ? '<i class="sp"> </i>' : `<i class="ch" aria-hidden="true" style="animation-delay:${(0.45 + (n++) * 0.07).toFixed(2)}s">${ch}</i>`).join("");
+  });
+  const eb = document.querySelector(".hero .eyebrow");
+  if (eb) eb.classList.add("eb-in");
+})();
