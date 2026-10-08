@@ -56,17 +56,20 @@ function card(a){
     <h3>${esc(a.title)}</h3><p style="margin:0;color:var(--sub);font-size:.9rem">${esc(a.summary)}</p></div></a>`;
 }
 
-// ダミーの事業所（本物の事業所名に差し替えてください）
+// 事業所（360°ツアーが公開されている事業所。出典: https://www.fb-kaigo.co.jp/360tour ）
 const FACILITIES = [
-  {id:"a", name:"事業所A（ダミー）", type:"グループホーム", area:"長野県", note:"少人数で暮らす、家庭的な雰囲気の事業所です。"},
-  {id:"b", name:"事業所B（ダミー）", type:"デイサービス（通所介護）", area:"長野県", note:"日中に通う利用者さんと、活動を楽しむ事業所です。"},
-  {id:"c", name:"事業所C（ダミー）", type:"小規模多機能型居宅介護", area:"新潟県", note:"通い・訪問・宿泊を組み合わせて支えます。"},
-  {id:"d", name:"事業所D（ダミー）", type:"福祉用具レンタル・販売", area:"栃木県", note:"福祉用具をご自宅に届ける仕事を体験できます。"},
-  {id:"e", name:"事業所E（ダミー）", type:"介護付き有料老人ホーム", area:"群馬県", note:"生活全体を支える、大きめの施設です。"},
-  {id:"f", name:"事業所F（ダミー）", type:"訪問介護（ホームヘルプ）", area:"埼玉県", note:"ご自宅を訪問して生活を支える仕事です。"}
+  {"id": "azumino", "name": "グループホーム安曇野", "type": "グループホーム", "area": "長野県安曇野市", "pref": "長野県", "note": "少人数で暮らす、家庭的な雰囲気の事業所です。", "img": "img/fac-azumino.jpg", "tour": "https://r72075300.theta360.biz/t/4c1a858c-db75-11ee-b05c-06e15c8163f7-1"},
+  {"id": "kamada", "name": "看護小規模多機能あったかほーむかまだ（ケアライフかまだ）", "type": "看護小規模多機能型居宅介護", "area": "長野県松本市", "pref": "長野県", "note": "通い・訪問・泊まりに、看護も組み合わせて暮らしを支えます。", "img": "img/fac-kamada.jpg", "tour": "https://r72075300.theta360.biz/t/386ef7ae-ae83-11ed-8f32-0613720b7bf9-1"},
+  {"id": "asama", "name": "小規模多機能あったかほーむあさま（ケアライフあさま）", "type": "小規模多機能型居宅介護", "area": "長野県佐久市", "pref": "長野県", "note": "通い・訪問・泊まりを組み合わせて暮らしを支えます。", "img": "img/fac-asama.jpg", "tour": "https://r72075300.theta360.biz/t/2ab506de-5211-11ea-8904-0a51b667580a-1"},
+  {"id": "suwa", "name": "グループホーム諏訪沖田", "type": "グループホーム", "area": "長野県諏訪市", "pref": "長野県", "note": "少人数で暮らす、家庭的な雰囲気の事業所です。", "img": "img/fac-suwa.jpg", "tour": "https://r72075300.theta360.biz/t/24a3f626-adce-11ed-8da7-0613720b7bf9-1"},
+  {"id": "furusato", "name": "グループホーム古里", "type": "グループホーム", "area": "長野県上田市", "pref": "長野県", "note": "少人数で暮らす、家庭的な雰囲気の事業所です。", "img": "img/fac-furusato.jpg", "tour": "https://r72075300.theta360.biz/t/ec743140-a3e3-11ea-aa12-06bdb15a584a-1"},
+  {"id": "itoigawa", "name": "グループホームエフビー糸魚川", "type": "グループホーム", "area": "新潟県糸魚川市", "pref": "新潟県", "note": "少人数で暮らす、家庭的な雰囲気の事業所です。", "img": "img/fac-itoigawa.jpg", "tour": "https://r72075300.theta360.biz/t/f1e514d2-c3ce-11ee-80e7-0613720b7bf9-1"},
+  {"id": "yuinomori", "name": "グループホームエフビーゆいの杜（ゆいのもり）", "type": "グループホーム", "area": "栃木県宇都宮市", "pref": "栃木県", "note": "少人数で暮らす、家庭的な雰囲気の事業所です。", "img": "img/fac-yuinomori.jpg", "tour": "https://r72075300.theta360.biz/t/61ae6d4e-23e2-11f0-80fc-06e15c8163f7-1"},
+  {"id": "oyama", "name": "グループホームエフビー小山", "type": "グループホーム", "area": "栃木県小山市", "pref": "栃木県", "note": "少人数で暮らす、家庭的な雰囲気の事業所です。", "img": "img/fac-oyama.jpg", "tour": "https://r72075300.theta360.biz/t/3ced752c-e662-11ee-9637-0a8a3e894413-1"},
+  {"id": "hanyu", "name": "グループホームエフビー羽生", "type": "グループホーム", "area": "埼玉県羽生市", "pref": "埼玉県", "note": "少人数で暮らす、家庭的な雰囲気の事業所です。", "img": "img/fac-hanyu.jpg", "tour": "https://r72075300.theta360.biz/t/0eb700ea-c469-11ed-9430-0a7fdda087bb-1"}
 ];
 function fillFac(id,n){
-  document.getElementById(id).innerHTML = FACILITIES.slice(0,n).map(f=>`<a class="card" href="facility.html?id=${f.id}"><div class="thumb ph"><img src="img/facility.jpg" alt=""></div><div class="body"><span class="label">${esc(f.type)}</span><span class="date">${esc(f.area)}</span><h3>${esc(f.name)}</h3><p style="margin:0;color:var(--sub);font-size:.9rem">${esc(f.note)}</p></div></a>`).join("");
+  document.getElementById(id).innerHTML = FACILITIES.slice(0,n).map(f=>`<a class="card" href="facility.html?id=${f.id}"><div class="thumb ph"><img src="${f.img}" alt="${esc(f.name)}の外観"><span class="tour360">360°</span></div><div class="body"><span class="label">${esc(f.type)}</span><span class="date">${esc(f.area)}</span><h3>${esc(f.name).replace("多機能","多機能\u200b").replace("（","\u200b（")}</h3><p style="margin:0;color:var(--sub);font-size:.9rem">${esc(f.note)}</p></div></a>`).join("");
 }
 
 // ページ遷移：ゆっくりフェード（0.55秒で現れ、0.5秒で消える）
