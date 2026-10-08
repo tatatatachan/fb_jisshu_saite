@@ -87,3 +87,25 @@ footer.site{background:var(--ink);color:#e8e4d0;padding:48px 0 40px;font-size:.9
 footer.site p{margin:0 0 .8em}
 .fab{position:fixed;right:18px;bottom:18px;z-index:30;width:86px;height:86px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:.75rem;text-align:center;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.2);line-height:1.5;letter-spacing:.05em}
 @media(max-width:640px){body{font-size:16px}nav.gnav a.cta{display:none}nav.gnav a{padding:4px 10px}.wrap{padding:0 22px}.fab{width:72px;height:72px}}
+
+/* 実習の流れ（枠・矢印・STEP番号） */
+.flow{list-style:none;margin:0 auto;padding:0;max-width:760px}
+.flow li.step{display:flex;align-items:center;gap:24px;background:#fff;border:3px solid var(--mint);border-left-width:3px;border-radius:6px;padding:22px 24px;position:relative}
+.flow .ill{width:104px;height:104px;flex:none}
+.flow .st-body{flex:1}.flow h3{margin:0 0 .3em;font-size:1.3rem;color:var(--mint-d);line-height:1.5}.flow p{margin:0;font-size:1rem;line-height:1.8}
+.flow .badge{flex:none;width:76px;height:76px;border-radius:50%;background:var(--mint);color:#fff;font-weight:900;font-family:Montserrat,sans-serif;font-size:1.6rem;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;margin-right:-6px}
+.flow .badge small{font-size:.6rem;letter-spacing:.15em;margin-bottom:3px}
+.flow li.arrow{height:34px;margin:0 auto;width:56px;background:var(--sun);clip-path:polygon(0 0,100% 0,50% 100%);margin-top:6px;margin-bottom:6px}
+/* 余白のイラスト */
+.rel{position:relative}
+.deco{position:absolute;z-index:0;pointer-events:none;width:clamp(70px,9vw,130px);height:auto}
+.d-hero1{left:5%;bottom:clamp(60px,9vw,120px);transform:rotate(-8deg);z-index:2}
+.d-hero2{right:6%;bottom:clamp(90px,12vw,170px);transform:rotate(7deg);z-index:2}
+.d-mis1{left:6%;top:50%;transform:translateY(-30%) rotate(-6deg)}
+.d-mis2{right:6%;top:60%;transform:translateY(-30%) rotate(8deg)}
+.trio{display:flex;justify-content:center;gap:clamp(12px,3vw,32px);margin-bottom:32px}
+.trio img{width:clamp(64px,9vw,96px);height:auto}.trio img:nth-child(2){transform:translateY(-10px) rotate(-4deg)}.trio img:nth-child(1){transform:rotate(5deg)}.trio img:nth-child(3){transform:rotate(-6deg)}
+@media(max-width:760px){
+ .flow li.step{flex-wrap:wrap;gap:14px;padding:20px 18px}.flow .ill{width:84px;height:84px}.flow .badge{width:64px;height:64px;font-size:1.3rem;margin-right:0}
+ .d-mis1,.d-mis2{display:none}.d-hero1{left:3%}.d-hero2{right:3%}
+}
