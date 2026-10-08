@@ -7,29 +7,29 @@ function snsLinks(){
   return `<a class="line ${C.lineUrl?"":"off"}" href="${esc(C.lineUrl||"#")}" target="_blank" rel="noopener">LINE${C.lineUrl?"":"（準備中）"}</a><a class="insta ${C.instagramUrl?"":"off"}" href="${esc(C.instagramUrl||"#")}" target="_blank" rel="noopener">Instagram${C.instagramUrl?"":"（準備中）"}</a>`;
 }
 function layout(current){
+  const here = location.pathname.split("/").pop() || "index.html";
   const cats = ["実習レポート","職員の声","人生の先輩のメッセージ","お知らせ"];
   const areas = ["長野県","新潟県","埼玉県","群馬県","栃木県"];
-  const li = (h,t,ext) => `<a href="${h}" ${ext?'target="_blank" rel="noopener"':""}><i></i>${t}</a>`;
+  const li = (href,t)=>`<li><a href="${href}"><i></i>${t}</a></li>`;
   document.body.insertAdjacentHTML("afterbegin", `<header class="site"><div class="wrap">
     <a class="logo" href="index.html"><img src="img/logo.png" alt="エフビー介護サービス">エフビー介護サービス<br>実習応募サイト</a>
-    <a class="cta hcta" href="apply.html">実習に申し込む</a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel"><svg viewBox="0 0 40 28" aria-hidden="true"><path d="M2 5q4.5-5 9 0t9 0 9 0 9 0M2 14q4.5-5 9 0t9 0 9 0 9 0M2 23q4.5-5 9 0t9 0 9 0 9 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>Menu</b></button></div></header>
-    <div class="menu-bg" hidden></div>
-    <aside id="menu-panel" class="menu-panel" aria-label="メニュー" hidden><svg class="menu-mt" viewBox="0 0 420 110" preserveAspectRatio="none" aria-hidden="true"><path d="M0 110V62L70 22 130 58 215 4 290 56 350 28 420 64V110Z"/></svg><div class="menu-in">
-      <h2 class="menu-ttl">Contents</h2>
-      <h3>記事から探す</h3><div class="mlist">${cats.map(c=>li("articles.html?cat="+encodeURIComponent(c),c)).join("")}</div>
-      <h3>地域から探す</h3><div class="mlist">${areas.map(a=>li("facilities.html",a+"の事業所")).join("")}</div>
-      <div class="mplain"><a href="about.html">実習について</a><a href="index.html#flow">実習の流れ</a><a href="facilities.html">事業所</a><a href="articles.html">実習レポート・記事一覧</a><a href="faq.html">よくある質問</a><a href="https://www.vision-community.jp/articles/58102d0c-9da2-4661-a0a1-ddda64720cd3" target="_blank" rel="noopener">経営者が語る、エフビー介護サービスの未来</a></div>
+    <div class="hbtns"><a class="cta" href="apply.html">実習に申し込む</a>
+    <button class="menubtn" id="menubtn" aria-expanded="false" aria-controls="menupanel"><svg viewBox="0 0 40 28" aria-hidden="true"><path d="M2 5q4.500-4 9 0t9 0 9 0 9 0M2 14q4.500-4 9 0t9 0 9 0 9 0M2 23q4.500-4 9 0t9 0 9 0 9 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><span>Menu</span></button></div></div></header>
+    <div class="menuveil" id="menuveil" hidden></div>
+    <aside class="menupanel" id="menupanel" aria-label="メニュー" hidden><img class="mface" src="img/senpai2.png" alt="">
+      <p class="mttl">Contents</p>
+      <h2>記事から探す</h2><ul>${cats.map(c=>li("articles.html?cat="+encodeURIComponent(c),c)).join("")}</ul>
+      <h2>エリアから探す</h2><ul>${areas.map(a=>li("facilities.html",a+"の事業所")).join("")}</ul>
+      <ul class="plain"><li><a href="about.html">実習について</a></li><li><a href="index.html#flow">実習の流れ</a></li><li><a href="index.html#interview">経営者インタビュー</a></li><li><a href="faq.html">よくある質問</a></li><li><a href="privacy.html">個人情報の取扱い</a></li></ul>
       <a class="mcta" href="apply.html">実習に申し込む<span>→</span></a>
-      <div class="mtheme" role="group" aria-label="色の切り替え（検証用）"><span>色の検証</span><button type="button" data-t="teal">コーポレート</button><button type="button" data-t="orange">オレンジ</button></div><button class="mclose" type="button">✕ CLOSE</button></div></aside>`);
-  const btn=document.querySelector(".menu-btn"), pan=document.getElementById("menu-panel"), bg=document.querySelector(".menu-bg");
-  const set = o => { pan.hidden=bg.hidden=!o; btn.setAttribute("aria-expanded",o); document.body.style.overflow=o?"hidden":""; requestAnimationFrame(()=>document.body.classList.toggle("menu-open",o)); };
-  btn.onclick=()=>set(pan.hidden); bg.onclick=()=>set(false); pan.querySelector(".mclose").onclick=()=>set(false);
-  pan.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>set(false)));
-  const setT = t => { document.documentElement.dataset.menuTheme=t; pan.querySelectorAll(".mtheme button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===t)); try{localStorage.setItem("menuTheme",t)}catch(e){} };
-  let t0="teal"; try{ t0=localStorage.getItem("menuTheme")||"teal" }catch(e){}
-  setT(t0); pan.querySelectorAll(".mtheme button").forEach(b=>b.onclick=()=>setT(b.dataset.t));
-  document.addEventListener("keydown",e=>{ if(e.key==="Escape") set(false); });
+      <button class="mclose" id="mclose" type="button">✕ CLOSE</button></aside>`);
+  const panel=document.getElementById("menupanel"), veil=document.getElementById("menuveil"), btn=document.getElementById("menubtn");
+  const set=o=>{panel.hidden=!o;veil.hidden=!o;btn.setAttribute("aria-expanded",o);document.body.classList.toggle("menu-open",o);if(o)setTimeout(()=>panel.classList.add("on"),10);else panel.classList.remove("on");};
+  btn.addEventListener("click",()=>set(panel.hidden));
+  veil.addEventListener("click",()=>set(false));
+  document.getElementById("mclose").addEventListener("click",()=>set(false));
+  panel.addEventListener("click",e=>{if(e.target.closest("a"))set(false);});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")set(false);});
   document.body.insertAdjacentHTML("beforeend", `<a class="fab" href="apply.html">実習<br>申込</a>
   <footer class="site"><div class="wrap"><p><b>エフビー介護サービス 実習応募サイト</b></p><p>FUN LIFE! FUN LOCAL!　生きがい 持ち寄る 地域の未来</p>
   <p>信越・北関東に7種93拠点（長野55・埼玉12・新潟11・群馬8・栃木7）</p>
