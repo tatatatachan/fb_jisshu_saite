@@ -170,3 +170,14 @@ body{animation:pgin .55s ease both}
 html{transition:opacity .5s ease}html.leaving{opacity:0}
 @media(prefers-reduced-motion:reduce){body{animation:none}html{transition:none}}
 .flinks{display:flex;flex-wrap:wrap;gap:8px 28px;margin:18px 0 8px}.flinks a{color:#bfeade;text-decoration:none;border-bottom:1px solid rgba(191,234,222,.4);padding-bottom:2px}.flinks a:hover{border-color:#fff;color:#fff}
+/* ボタンの動き */
+.btn,.hbtns .cta,.tag,.mcta,.mclose,.fab{transition:transform .3s ease,box-shadow .3s ease,background-color .3s ease,color .3s ease,border-color .3s ease}
+.btn:hover,.hbtns .cta:hover,.mcta:hover{transform:translateY(-5px) scale(1.06);box-shadow:0 12px 24px rgba(0,0,0,.16)}
+.btn.ghost:hover{background:var(--mint);color:#fff;border-color:var(--mint)}
+.btn.orange:hover,.hbtns .cta:hover{background:#e97a48}
+.btn:active,.hbtns .cta:active{transform:translateY(-1px) scale(1.02)}
+.tag:hover{transform:translateY(-4px) scale(1.06);box-shadow:0 8px 16px rgba(0,0,0,.12)}
+.fab:hover{transform:scale(1.14) rotate(-6deg);box-shadow:0 10px 24px rgba(0,0,0,.28)}
+.mclose:hover{background:#fff;color:var(--mp);transform:scale(1.08)}
+.menubtn{transition:transform .3s ease}.menubtn:hover{transform:translateY(-3px) scale(1.1)}
+@media(prefers-reduced-motion:reduce){.btn:hover,.hbtns .cta:hover,.mcta:hover,.tag:hover,.fab:hover,.mclose:hover,.menubtn:hover{transform:none}}
