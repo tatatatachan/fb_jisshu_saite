@@ -479,3 +479,23 @@ ul.cs-list li[aria-selected=true]:before{content:"";position:absolute;left:16px;
 @media(max-width:860px){.pick .pk img{top:20px;bottom:auto;right:22px;width:84px}.pick .pk .no{margin-bottom:2.4em}.pick .pk{min-height:0}}
 .wrap.wide{max-width:1400px;padding:0 clamp(16px,3vw,48px)}
 @media(max-width:860px){.pick .pk img{width:72px;top:18px;right:20px}.pick .pk .no{margin-bottom:2.8em}}
+
+/* facts v3: シンプルな表 */
+.facts{display:block;background:#fff;border-radius:24px;padding:clamp(6px,1vw,12px) clamp(20px,3vw,40px);box-shadow:0 2px 0 var(--line)}
+.fact,.fact.wide,.fact.fee{display:grid;grid-template-columns:9em 1fr;align-items:center;gap:.4em 1.5em;background:none;border:0;box-shadow:none;border-radius:0;padding:clamp(16px,2vw,24px) 0;border-bottom:1px solid var(--line)}
+.fact:last-child{border-bottom:0}
+.fact .fl,.fact.fee .fl{background:none;color:var(--mint-d);padding:0;margin:0;font-size:.95rem;letter-spacing:.12em;border-radius:0;display:block;align-self:start;padding-top:.35em}
+.fact .fl .dummy{margin-left:.4em}
+.fact .fv{font-size:1.05rem;font-weight:400;line-height:1.9;color:var(--ink)}
+.fact .fv.big{font-size:clamp(1.15rem,2.2vw,1.45rem);font-weight:700}
+.fact.fee .fv{display:block}
+.fact.fee .fv b{display:inline;font-size:1.5rem;color:var(--accent);margin-right:.6em}
+.fact .fprog{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:.6em}
+.fprog a{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:16px 22px;color:var(--ink)}
+.fprog a.fp1{border-left:6px solid var(--mint)}.fprog a.fp5{border-left:6px solid var(--accent)}
+.fprog a:hover{border-color:var(--mint)}
+.fprog em{color:var(--mint-d)}.fprog a.fp5 em{color:#c4521f}
+.fprog b{font-size:1.25rem;color:var(--ink)}.fprog small{color:var(--sub);opacity:1}
+.fact:nth-child(n){background:none}
+@media(max-width:700px){.fact,.fact.wide,.fact.fee{grid-template-columns:1fr}.fact .fl{padding-top:0}.fact .fprog{grid-template-columns:1fr}}
+@media(min-width:701px){.fact .fl,.fact.fee .fl{align-self:center;padding-top:0}.fact.wide .fl{align-self:center}}
