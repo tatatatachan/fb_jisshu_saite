@@ -303,13 +303,3 @@ section.alt .nums div{background:var(--cream)}
 .mx{width:46px;height:46px;border-radius:50%;border:0;background:#fff;color:var(--mp);cursor:pointer;display:grid;place-items:center;box-shadow:0 3px 0 rgba(0,0,0,.15);transition:transform .3s ease}
 .mx svg{width:20px;height:20px}.mx:hover{transform:rotate(90deg) scale(1.1)}
 @media(max-width:640px){.mxwrap{top:-24px;margin-top:-26px}}
-
-.timetable{list-style:none;margin:1.2em 0 0;padding:0;border-top:3px dotted var(--mint)}
-.tt{display:grid;grid-template-columns:7.2em 1fr;gap:0 clamp(16px,3vw,36px);padding:26px 4px;border-bottom:3px dotted var(--mint);align-items:start}
-.tt-time{text-align:right;line-height:1.3;white-space:nowrap}
-.tt-time b{display:block;font:900 1.9rem Montserrat,sans-serif;color:var(--mint-d);letter-spacing:.01em}
-.tt-time span{font-size:.95rem;color:var(--sub);font-weight:700}
-.tt-body h3{margin:0 0 .35em;font-size:1.3rem;line-height:1.5;letter-spacing:.04em}
-.tt-body h3 em{font-style:normal;font-size:.8rem;background:#e8743f;color:#fff;border-radius:99px;padding:.15em .9em;margin-left:.6em;vertical-align:.15em;letter-spacing:.06em}
-.tt-body p{margin:0;font-size:1.06rem;line-height:2;letter-spacing:.04em;max-width:34em;color:#4a463a;word-break:auto-phrase;line-break:strict;text-wrap:pretty}
-@media(max-width:640px){.tt{grid-template-columns:1fr;padding:20px 2px}.tt-time{text-align:left;display:flex;align-items:baseline;gap:.7em;margin-bottom:.4em}.tt-time b{font-size:1.6rem}.tt-body h3{font-size:1.18rem}.tt-body p{font-size:1rem}}
