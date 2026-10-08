@@ -211,3 +211,5 @@ html.leaving .pgov{opacity:1;pointer-events:auto;animation:none}
 .fab .fabfaces img:nth-child(1){animation-delay:.0s}.fab .fabfaces img:nth-child(2){animation-delay:.25s;margin-top:-8px}.fab .fabfaces img:nth-child(3){animation-delay:.5s}
 @media(max-width:640px){.fab .fabfaces img{width:30px}.fab .fabfaces{top:-20px}.fab .fabtx{margin-top:18px}}
 @media(prefers-reduced-motion:reduce){.fab .fabfaces img{animation:none}}
+section.block.alt+section.block.alt{margin-top:0;padding-top:0}
+section.alt .nums div{background:var(--cream)}
