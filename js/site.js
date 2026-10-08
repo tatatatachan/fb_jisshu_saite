@@ -22,8 +22,7 @@ function layout(current){
       <h2>記事から探す</h2><ul>${cats.map(c=>li("articles.html?cat="+encodeURIComponent(c),c)).join("")}</ul>
       <h2>エリアから探す</h2><ul>${areas.map(a=>li("facilities.html",a+"の事業所")).join("")}</ul>
       <ul class="plain"><li><a href="about.html">実習について</a></li><li><a href="index.html#program">実習プログラム（1DAY・5DAYS）</a></li><li><a href="index.html#flow">実習の流れ</a></li><li><a href="index.html#interview">経営者インタビュー</a></li><li><a href="faq.html">よくある質問</a></li><li><a href="privacy.html">個人情報の取扱い</a></li></ul>
-      <a class="mcta" href="apply.html">実習に申し込む<span>→</span></a>
-      <div class="mtheme" role="group" aria-label="色の切り替え（検証用）"><span>色の検証</span><button type="button" data-t="teal">コーポレート</button><button type="button" data-t="orange">オレンジ</button></div></aside>`);
+      <a class="mcta" href="apply.html">実習に申し込む<span>→</span></a></aside>`);
   const panel=document.getElementById("menupanel"), veil=document.getElementById("menuveil"), btn=document.getElementById("menubtn");
   const set=o=>{panel.hidden=!o;veil.hidden=!o;btn.setAttribute("aria-expanded",o);document.body.classList.toggle("menu-open",o);if(o)setTimeout(()=>panel.classList.add("on"),10);else panel.classList.remove("on");};
   btn.addEventListener("click",()=>set(panel.hidden));
@@ -31,9 +30,6 @@ function layout(current){
   panel.addEventListener("click",e=>{const a=e.target.closest("a[href]");if(!a)return;const u=new URL(a.href,location.href);if(u.pathname===location.pathname&&u.hash)set(false);});
   document.getElementById("mx").addEventListener("click",()=>set(false));
   panel.addEventListener("click",e=>{if(e.target.closest("a"))set(false);});
-  const setT=t=>{document.documentElement.dataset.menuTheme=t;panel.querySelectorAll(".mtheme button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===t));try{localStorage.setItem("menuTheme",t)}catch(e){}};
-  let t0="orange";try{t0=localStorage.getItem("menuTheme")||"orange"}catch(e){}
-  setT(t0);panel.querySelectorAll(".mtheme button").forEach(b=>b.addEventListener("click",()=>setT(b.dataset.t)));
   document.addEventListener("keydown",e=>{if(e.key==="Escape")set(false);});
   document.body.insertAdjacentHTML("beforeend", `<a class="fab" href="apply.html"><img class="fabrun" src="img/apply-runner.png" alt=""><span class="fabtx">実習<br>申込</span></a>
   <footer class="site"><div class="wrap"><p><b>エフビー介護サービス 実習応募サイト</b></p><p>FUN LIFE! FUN LOCAL!　生きがい 持ち寄る 地域の未来</p>
