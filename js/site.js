@@ -26,6 +26,7 @@ async function loadArticles(){
     // microCMS の項目名（id,title,category,tags,date,summary,body,emoji）を、そのまま使います
     return j.contents.map(a => ({...a, category: Array.isArray(a.category)?a.category[0]:a.category}));
   }
+  if (window.ARTICLES_DATA) return window.ARTICLES_DATA.articles;
   const r = await fetch("data/articles.json"); return (await r.json()).articles;
 }
 

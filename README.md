@@ -3,7 +3,7 @@
 学生の職場体験・実習向けサイト。ビルド不要の静的サイトです。
 
 ## 見る方法
-このフォルダで `python3 -m http.server` を実行し、http://localhost:8000 を開きます。
+`index.html` をダブルクリックして、ブラウザで開きます（サーバーは不要です）。
 
 ## 公開前に設定するもの（`js/config.js`）
 - `applyFormUrl`：申込フォームのURL
