@@ -499,3 +499,7 @@ ul.cs-list li[aria-selected=true]:before{content:"";position:absolute;left:16px;
 .fact:nth-child(n){background:none}
 @media(max-width:700px){.fact,.fact.wide,.fact.fee{grid-template-columns:1fr}.fact .fl{padding-top:0}.fact .fprog{grid-template-columns:1fr}}
 @media(min-width:701px){.fact .fl,.fact.fee .fl{align-self:center;padding-top:0}.fact.wide .fl{align-self:center}}
+.fprog a.fp1,.fprog a.fp5{border-left:1.5px solid var(--line)}
+.fprog a{transition:transform .3s,background .3s,border-color .3s}
+.fprog a.fp1:hover{border-color:var(--mint);background:#e8f7f6}
+.fprog a.fp5:hover{border-color:var(--accent);background:#fdeee4}
