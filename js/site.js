@@ -112,3 +112,11 @@ function fillFac(id,n){
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fig.classList.add("in");io.disconnect();}}),{threshold:.25});
   io.observe(fig);
 })();
+
+// .rv：画面に入ったらふわっと現れる
+(function(){
+  const els=document.querySelectorAll(".rv"); if(!els.length) return;
+  if(!("IntersectionObserver" in window)){els.forEach(e=>e.classList.add("in"));return;}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.2});
+  els.forEach(e=>io.observe(e));
+})();
