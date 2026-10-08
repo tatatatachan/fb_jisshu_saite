@@ -479,31 +479,3 @@ ul.cs-list li[aria-selected=true]:before{content:"";position:absolute;left:16px;
 @media(max-width:860px){.pick .pk img{top:20px;bottom:auto;right:22px;width:84px}.pick .pk .no{margin-bottom:2.4em}.pick .pk{min-height:0}}
 .wrap.wide{max-width:1400px;padding:0 clamp(16px,3vw,48px)}
 @media(max-width:860px){.pick .pk img{width:72px;top:18px;right:20px}.pick .pk .no{margin-bottom:2.8em}}
-
-/* facts v2 */
-.facts{gap:clamp(12px,1.6vw,18px)}
-.fact{padding:clamp(18px,2vw,26px) clamp(20px,2.4vw,32px);border:0;box-shadow:none;border-radius:26px;background:var(--mint-l);display:flex;flex-direction:column;justify-content:center;gap:.5em}
-.fact .fl{align-self:flex-start;background:#fff;color:var(--mint-d);font-size:.82rem;padding:.2em 1em}
-.fact .fv{margin:0;font-weight:700;line-height:1.7}
-.fact:nth-child(1){background:linear-gradient(135deg,#14b8b2,#00807d);color:#fff}
-.fact:nth-child(1) .fv{color:#fff;font-size:clamp(1.2rem,2.6vw,1.8rem);line-height:1.5}
-.fact.fee{background:linear-gradient(135deg,#f08c57,#d65f28);color:#fff;flex-direction:row;align-items:center;gap:1.2em;flex-wrap:wrap}
-.fact.fee .fl{background:#fff;color:#c4521f}
-.fact.fee .fv{display:flex;align-items:baseline;gap:.6em;flex-wrap:wrap;color:#fff}
-.fact.fee .fv b{font-size:clamp(2rem,4vw,2.8rem);line-height:1;color:#fff}
-.fact:nth-child(4){background:transparent;padding:0}
-.fact:nth-child(4) .fl{background:var(--mint-d);color:#fff}
-.fprog a{padding:22px 26px;border-radius:26px;color:#fff;background:linear-gradient(135deg,#14b8b2,#00807d)}
-.fprog a.fp5{background:linear-gradient(135deg,#f08c57,#d65f28)}
-.fprog em,.fprog b,.fprog small{color:#fff}.fprog small{opacity:.9}
-.fprog b{font-size:clamp(1.3rem,2.6vw,1.8rem)}
-.fact:nth-child(5){background:#fff0c4}.fact:nth-child(6){background:#ffe8d9}
-.fact:nth-child(5) .fl,.fact:nth-child(6) .fl{background:#fff}
-.dummy{background:rgba(255,255,255,.7)}
-.fact .fl{margin:0}
-.fact.fee{box-shadow:none;border:0;align-items:center}
-.fact.fee .fl{align-self:center}
-.fact:nth-child(4){gap:.7em;padding:0}
-.fact:nth-child(4) .fl{padding:.25em 1.2em}
-.fact:nth-child(5),.fact:nth-child(6){justify-content:flex-start}
-@media(max-width:700px){.fact.fee{flex-direction:column;align-items:flex-start;gap:.5em}.fact.fee .fl{align-self:flex-start}}
