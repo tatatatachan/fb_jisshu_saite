@@ -244,7 +244,7 @@ section.alt .nums div{background:var(--cream)}
 .hbtns:has(.cta:hover) .hrun{animation-duration:4s}
 
 /* 拠点マップ */
-.area-fig{margin:0;max-width:600px;margin-inline:auto;opacity:0;transform:translateY(28px) scale(.97);transition:opacity .9s ease,transform .9s ease}
+.area-fig{margin:0;max-width:900px;margin-inline:auto;opacity:0;transform:translateY(28px) scale(.97);transition:opacity .9s ease,transform .9s ease}
 .area-fig.in{opacity:1;transform:none}
 .area-fig img{display:block;width:100%;height:auto}
 @media(prefers-reduced-motion:reduce){.area-fig{opacity:1;transform:none;transition:none}}
@@ -252,7 +252,7 @@ section.alt .nums div{background:var(--cream)}
 /* エフビー流の学び（循環図） */
 .lh-sub{text-align:center;color:var(--mint-d);font-weight:700;letter-spacing:.12em;margin:0}
 .lh-ttl{text-align:center;font-size:clamp(1.3rem,3.2vw,2rem);line-height:1.6;margin:.2em 0 1.4em}
-.learn{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr) minmax(0,1fr);gap:clamp(16px,3vw,36px);align-items:center}
+.learn{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr) minmax(0,1fr);gap:clamp(16px,3vw,36px);align-items:center}
 .lbox{background:#fff;border:2.5px solid var(--accent);border-radius:26px;padding:22px 24px;box-shadow:0 6px 0 rgba(240,138,93,.18)}
 .lbox.lb-t{border-color:var(--mint);box-shadow:0 6px 0 rgba(0,172,168,.18)}
 .lbox h3{margin:0 0 .2em;text-align:center;font-size:1.7rem;letter-spacing:.12em;color:var(--accent)}
@@ -260,11 +260,16 @@ section.alt .nums div{background:var(--cream)}
 .lbox .lq{font-weight:700;margin:0 0 .5em;text-align:center;font-size:.98rem}
 .lbox ul{margin:0;padding-left:1.1em;font-size:.9rem;line-height:1.9;color:var(--sub)}
 .lside{display:grid;gap:22px}
-.lcycle{position:relative;width:100%;max-width:400px;aspect-ratio:1;margin-inline:auto}
+.lcycle{position:relative;width:100%;max-width:500px;aspect-ratio:1;margin-inline:auto}
 .lcycle svg{position:absolute;inset:0;width:100%;height:100%}
-.lcore{position:absolute;left:50%;top:50%;width:52%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#fdeee4 0%,#fdeee4 60%,rgba(253,238,228,.0) 100%);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--accent);font-size:clamp(.95rem,2vw,1.25rem);line-height:1.7}
-.lc{position:absolute;width:31%;aspect-ratio:1;border-radius:50%;background:#fff;border:3px solid var(--mint);display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;color:var(--mint-d);font-size:clamp(.66rem,1.2vw,.8rem);line-height:1.4;transform:translate(-50%,-50%)}
-.lc1{left:50%;top:14%}.lc2{left:86%;top:50%}.lc3{left:50%;top:86%}.lc4{left:14%;top:50%}
+.lcore{position:absolute;left:50%;top:50%;width:40%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#fdeee4 0%,#fdeee4 60%,rgba(253,238,228,.0) 100%);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--accent);font-size:clamp(.8rem,1.5vw,1.05rem);line-height:1.6}
+.lc{position:absolute;width:32%;aspect-ratio:1;border-radius:50%;background:var(--mint);border:4px solid #fff;box-shadow:0 5px 0 rgba(0,128,125,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;line-height:1.3;transform:translate(-50%,-50%)}
+.lc i{font:900 .72rem Montserrat,sans-serif;font-style:normal;letter-spacing:.1em;background:#fff;color:var(--mint-d);border-radius:99px;padding:0 .6em;margin-bottom:.25em}
+.lc b{font-size:clamp(.85rem,1.7vw,1.1rem);letter-spacing:.04em}
+.lc small{font-size:clamp(.55rem,1vw,.68rem);font-weight:500;margin-top:.15em;opacity:.95}
+.lc3,.lc4{background:#e8743f;box-shadow:0 5px 0 rgba(232,116,63,.25)}
+.lc3 i,.lc4 i{color:#c4521f}
+.lc1{left:50%;top:16%}.lc2{left:84%;top:50%}.lc3{left:50%;top:84%}.lc4{left:16%;top:50%}
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
 .rv.in{opacity:1;transform:none}
 .lcycle.rv.in .lc{animation:lcpop .7s cubic-bezier(.2,1.4,.4,1) both}
