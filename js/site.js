@@ -37,7 +37,7 @@ function layout(current){
   document.body.insertAdjacentHTML("beforeend", `<a class="fab" href="apply.html">実習<br>申込</a>
   <footer class="site"><div class="wrap"><p><b>エフビー介護サービス 実習応募サイト</b></p><p>FUN LIFE! FUN LOCAL!　生きがい 持ち寄る 地域の未来</p>
   <p>信越・北関東に7種93拠点（長野55・埼玉12・新潟11・群馬8・栃木7）</p>
-  <div class="sns">${snsLinks()}</div><p><a href="privacy.html">個人情報の取扱い</a>　<a href="apply.html">実習の申込</a></p>
+  <div class="sns">${snsLinks()}</div><nav class="flinks" aria-label="フッター"><a href="apply.html">実習の申込</a><a href="privacy.html">プライバシーポリシー（個人情報の取扱い）</a><a href="https://www.fb-kaigo.co.jp/" target="_blank" rel="noopener">コーポレートサイト（エフビー介護サービス）↗</a></nav>
   <p style="opacity:.7">※ このサイトは制作中のサンプルです。記事の内容はダミーです。</p></div></footer>`);
 }
 
