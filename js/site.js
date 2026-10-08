@@ -17,7 +17,7 @@ function layout(current){
     <div class="hbtns"><img class="hrun" src="img/header-meal.png" alt=""><a class="cta" href="apply.html">実習に申し込む</a>
     <button class="menubtn" id="menubtn" aria-expanded="false" aria-controls="menupanel"><svg viewBox="0 0 42 28" aria-hidden="true"><path d="M1 26C7 26 10 11 16 11S22 20 26 15S30 2 34 2S39 26 41 26Z" fill="currentColor"/></svg><span>Menu</span></button></div></div></header>
     <div class="menuveil" id="menuveil" hidden></div>
-    <aside class="menupanel" id="menupanel" aria-label="メニュー" hidden><img class="mface" src="img/senpai2.png" alt="">
+    <aside class="menupanel" id="menupanel" aria-label="メニュー" hidden><div class="mxwrap"><button class="mx" id="mx" type="button" aria-label="メニューを閉じる"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3L17 17M17 3L3 17" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></button></div><img class="mface" src="img/senpai2.png" alt="">
       <p class="mttl">Contents</p>
       <h2>記事から探す</h2><ul>${cats.map(c=>li("articles.html?cat="+encodeURIComponent(c),c)).join("")}</ul>
       <h2>エリアから探す</h2><ul>${areas.map(a=>li("facilities.html",a+"の事業所")).join("")}</ul>
@@ -30,6 +30,7 @@ function layout(current){
   btn.addEventListener("click",()=>set(panel.hidden));
   veil.addEventListener("click",()=>set(false));
   document.getElementById("mclose").addEventListener("click",()=>set(false));
+  document.getElementById("mx").addEventListener("click",()=>set(false));
   panel.addEventListener("click",e=>{if(e.target.closest("a"))set(false);});
   const setT=t=>{document.documentElement.dataset.menuTheme=t;panel.querySelectorAll(".mtheme button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===t));try{localStorage.setItem("menuTheme",t)}catch(e){}};
   let t0="orange";try{t0=localStorage.getItem("menuTheme")||"orange"}catch(e){}
