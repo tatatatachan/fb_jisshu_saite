@@ -295,3 +295,6 @@ section.alt .nums div{background:var(--cream)}
 #learn .lbox .lq{font-size:clamp(.98rem,1.3vw,1.15rem)}
 #learn .lbox h3{font-size:clamp(1.5rem,2.2vw,2rem)}
 @media(max-width:860px){#learn .lcycle{max-width:420px}}
+
+.lc1{left:24%;top:24%}.lc2{left:76%;top:24%}.lc3{left:76%;top:76%}.lc4{left:24%;top:76%}
+#learn .lcore{width:34%}
