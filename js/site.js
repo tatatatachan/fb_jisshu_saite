@@ -1,7 +1,6 @@
 const C = window.SITE_CONFIG;
 const LABELS = {"実習レポート":"", "職員の声":"l-voice", "人生の先輩のメッセージ":"l-senpai", "お知らせ":"l-news"};
 const ICON = {"実習レポート":"📒","職員の声":"💬","人生の先輩のメッセージ":"🌿","お知らせ":"📣"};
-const NAV = [["about.html","実習について"],["facilities.html","事業所"],["articles.html","実習レポート・記事"],["faq.html","よくある質問"]];
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
 function snsLinks(){

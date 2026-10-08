@@ -67,7 +67,7 @@ window.ARTICLES_DATA = {
    "emoji": "📣",
    "summary": "お知らせの掲載例です。",
    "body": "これはサンプル記事です。",
-   "image": "img/hero.jpg"
+   "image": "img/thumb-work.jpg"
   }
  ]
 };
