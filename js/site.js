@@ -160,3 +160,12 @@ function fillFac(id,n){
   const start=()=>{run();new MutationObserver(ms=>{if(ms.some(m=>[...m.addedNodes].some(a=>!(a.classList&&(a.classList.contains("jpw")||a.classList.contains("jpp"))))))sched();}).observe(document.body,{childList:true,subtree:true});};
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",()=>setTimeout(start,0));else setTimeout(start,0);
 })();
+
+
+// ページ遷移で開いたときは、必ず一番上から表示する（「戻る」のときは元の位置）
+(function(){
+  const nav=performance.getEntriesByType&&performance.getEntriesByType("navigation")[0];
+  if(location.hash||(nav&&nav.type!=="navigate"))return;
+  const top=()=>window.scrollTo({top:0,left:0,behavior:"instant"});
+  top();window.addEventListener("load",top);setTimeout(top,60);setTimeout(top,300);
+})();

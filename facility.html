@@ -5,8 +5,8 @@
 if(!f){el.innerHTML="<p>事業所が見つかりませんでした。</p>";return;}document.title=f.name+"｜エフビー介護サービス 実習";document.getElementById("bc").textContent=f.name;
 el.innerHTML=`<div class="article"><img class="pagephoto in" src="${f.img}" alt="${esc(f.name)}の外観"><span class="label">${esc(f.type)}</span><span class="date">${esc(f.area)}</span><h1>${esc(f.name).replace("多機能","多機能\u200b").replace("（","\u200b（")}</h1>
 <p>${esc(f.note)}</p>
-<h2 class="sec mt"><small>360° TOUR</small>360°事業所案内ツアー</h2><p>画面をドラッグすると、事業所の中を見回せます。実習の前に、雰囲気をのぞいてみてください。</p>
-<div class="tourbox"><div class="tfall">360°ツアーを読み込めないときは、下のボタンから開いてください。</div><iframe src="${f.tour}" title="${esc(f.name)}の360°ツアー" loading="lazy" allowfullscreen></iframe></div>
-<p><a class="btn ghost" href="${f.tour}" target="_blank" rel="noopener noreferrer">360°ツアーを新しいタブで開く ↗</a></p>
+<h2 class="sec mt"><small>360° TOUR</small>360°事業所案内ツアー</h2><p>ボタンを押すと、事業所の中を360°見回せます。実習の前に、雰囲気をのぞいてみてください。</p>
+<a class="tourbox" href="${f.tour}" target="_blank" rel="noopener noreferrer"><img src="${f.img}" alt="${esc(f.name)}の外観"><span class="tourbtn"><i>360°</i>ツアーを見る<em>↗</em></span></a>
+<p style="color:var(--sub);font-size:.9rem">※ 外部のページ（360°ツアー）が新しいタブで開きます。</p>
 <h2 class="sec mt"><small>PROGRAM</small>実習で体験できること</h2><p style="color:var(--sub)"><span class="dummy">調整中</span> 実習の内容は <a href="about.html#program">実習プログラム（1DAY・5DAYS）</a> をご覧ください。</p>
-<h2 class="sec mt"><small>INFO</small>実習の基本情報</h2><table class="t"><tr><th>種別</th><td>${esc(f.type)}</td></tr><tr><th>所在地</th><td>${esc(f.area)}</td></tr><tr><th>費用</th><td>無償</td></tr><tr><th>持ち物・服装</th><td>動きやすい服装、上履き、筆記用具 <span class="dummy">ダミー</span></td></tr></table></div>`;})();</script></body></html>
+<h2 class="sec mt"><small>INFO</small>実習の基本情報</h2><table class="t"><tr><th>種別</th><td>${esc(f.type)}</td></tr><tr><th>所在地</th><td>${esc(f.area)}</td></tr><tr><th>費用</th><td>無償</td></tr><tr><th>持ち物・服装</th><td>動きやすい服装、上履き、筆記用具 <span class="dummy">ダミー</span></td></tr></table></div>`;window.scrollTo(0,0);})();</script></body></html>

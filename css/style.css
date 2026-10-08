@@ -382,3 +382,12 @@ section[id],h2[id],h3[id]{scroll-margin-top:84px}
 .policy li li{margin-bottom:.3em}
 .pcontact{background:#e3f4f3;border-radius:14px;padding:12px 18px;font-weight:700}
 .signoff{text-align:right;margin-top:2em;line-height:1.9;font-weight:700}
+
+a.tourbox{display:block;position:relative;aspect-ratio:16/9;border-radius:24px;overflow:hidden;border:3px solid var(--mint);margin:1em 0 .6em;text-decoration:none}
+a.tourbox img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+a.tourbox:hover img{transform:scale(1.04)}
+a.tourbox:before{content:"";position:absolute;inset:0;background:rgba(0,60,58,.28);z-index:1}
+.tourbtn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;display:flex;align-items:center;gap:.6em;background:#e8743f;color:#fff;font-weight:700;font-size:clamp(1rem,2.4vw,1.5rem);border-radius:99px;padding:.7em 1.6em;box-shadow:0 5px 0 rgba(0,0,0,.18);white-space:nowrap;transition:transform .3s}
+a.tourbox:hover .tourbtn{transform:translate(-50%,-54%)}
+.tourbtn i{font:900 1.1em Montserrat,sans-serif;font-style:normal;background:#fff;color:#e8743f;border-radius:99px;padding:0 .6em}
+.tourbtn em{font-style:normal}
