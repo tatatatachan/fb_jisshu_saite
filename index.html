@@ -1,0 +1,17 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>実習サイト｜エフビー介護サービス 実習</title><link rel="stylesheet" href="css/style.css"></head><body>
+<section class="hero"><div class="wrap"><div class="eyebrow">CARE PRACTICE</div>
+<h1>介護の現場を、<br>まず体験してみよう。</h1>
+<p>生きがい、持ち寄る。地域の未来。<br>おじいちゃん、おばあちゃんが主役になれる場所で、一日を過ごしてみませんか。</p>
+<a class="btn orange" href="apply.html">実習に申し込む</a> <a class="btn ghost" href="about.html">実習について知る</a></div>
+<svg viewBox="0 0 1200 150" preserveAspectRatio="none" aria-hidden="true"><path d="M0 150V90L140 40 260 85 400 20 560 95 700 45 860 100 1000 35 1200 90V150Z" fill="#a8dccf"/><path d="M0 150V115L180 75 330 118 520 70 700 120 900 80 1060 118 1200 95V150Z" fill="#4fc4ab"/></svg></section>
+<section class="block"><div class="wrap"><div class="pick"><a href="about.html"><b>実習のプログラム</b>どんな一日を過ごすのか、学べることを紹介します。</a><a href="articles.html?cat=人生の先輩のメッセージ"><b>人生の先輩からのメッセージ</b>ご利用者さんから、みなさんへのひとこと。</a></div></div></section>
+<section class="block alt"><div class="wrap"><h2 class="sec"><small>FLOW</small>実習の流れ</h2><p class="lead">はじめてでも安心して参加できるように、ステップをそろえています。</p>
+<ol class="steps"><li><b>申し込む</b><br>フォームから日程を選んで申込</li><li><b>事前の連絡</b><br>持ち物や服装をお知らせ</li><li><b>実習の当日</b><br>職員がそばでサポート</li><li><b>振り返り</b><br>感じたことを話し合う</li></ol></div></section>
+<section class="block"><div class="wrap"><h2 class="sec"><small>MOVIE</small>現場の空気を見てみよう</h2><p class="lead">実習の様子を動画で紹介します。</p><div class="video"><div>▶ 動画は準備中です<br><small>（紹介動画が用意でき次第、ここに入ります）</small></div></div></div></section>
+<section class="block alt"><div class="wrap"><h2 class="sec"><small>SEARCH</small>気になることから探す</h2><p class="lead">不安や興味のあるキーワードを選んでください。</p><div class="tags" id="tags"></div></div></section>
+<section class="block"><div class="wrap"><h2 class="sec"><small>NEW</small>新しい記事</h2><div class="grid" id="list"></div><p class="center mt"><a class="btn ghost" href="articles.html">記事をもっと見る</a></p></div></section>
+<section class="block alt"><div class="wrap"><h2 class="sec"><small>AREA</small>長野を中心に、93の拠点</h2><p class="lead">日本一長寿の県・長野から。信越・北関東に7種93拠点があります。</p>
+<div class="nums"><div><b>55</b>長野県</div><div><b>12</b>埼玉県</div><div><b>11</b>新潟県</div><div><b>8</b>群馬県</div><div><b>7</b>栃木県</div></div></div></section>
+<section class="block"><div class="wrap center"><h2 class="sec">まずは、見学や体験から。</h2><p class="lead">質問だけでも大丈夫です。</p><a class="btn orange" href="apply.html">実習に申し込む</a></div></section>
+<script src="js/config.js"></script><script src="js/site.js"></script><script>layout();(async()=>{const a=await loadArticles();document.getElementById("list").innerHTML=a.slice(0,3).map(card).join("");const t=[...new Set(a.flatMap(x=>x.tags||[]))];document.getElementById("tags").innerHTML=t.map(x=>`<a class="tag" href="articles.html?tag=${encodeURIComponent(x)}">${esc(x)}</a>`).join("");})();</script></body></html>
