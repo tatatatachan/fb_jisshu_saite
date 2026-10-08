@@ -4,4 +4,4 @@
 <script src="js/config.js"></script><script src="js/articles-data.js"></script><script src="js/site.js"></script><script>layout();(async()=>{const id=new URLSearchParams(location.search).get("id");const a=(await loadArticles()).find(x=>String(x.id)===id);const el=document.getElementById("a");
 if(!a){el.innerHTML="<p>記事が見つかりませんでした。</p>";return;}document.title=a.title+"｜エフビー介護サービス 実習";document.getElementById("bc").textContent=a.title;
 const body=typeof a.body==="string"&&a.body.includes("<")&&C.source==="microcms"?a.body:esc(a.body).split("\n").map(l=>l?`<p>${l}</p>`:"").join("");
-el.innerHTML=`<span class="label ${LABELS[a.category]||""}">${esc(a.category)}</span><span class="date">${esc(a.date)}</span><h1>${esc(a.title)}</h1>${body}`;})();</script></body></html>
+el.innerHTML=`<span class="label ${LABELS[a.category]||""}">${esc(a.category)}</span><span class="date">${esc(a.date)}</span><h1>${esc(a.title)}</h1>${a.image?`<img class="hero-img" src="${esc(a.image)}" alt="" style="width:100%;border-radius:12px;margin:0 0 1rem">`:""}${body}`;})();</script></body></html>
