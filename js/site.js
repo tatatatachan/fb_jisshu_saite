@@ -121,7 +121,7 @@ function fillFac(id,n){
 (function(){
   if(!window.Intl||!Intl.Segmenter) return;
   const seg=new Intl.Segmenter("ja",{granularity:"word"});
-  const SKIP="script,style,textarea,select,option,code,pre,svg,.jpw,.fun,[data-nojp]";
+  const SKIP="script,style,textarea,select,option,code,pre,svg,.jpw,.fun,.pk,.fab,[data-nojp]";
   const hira=c=>/[ぁ-ゟ]/.test(c);
   const closeP=/^[、。，．）」』】〕〉》！？!?：；,.)\]・ー〜~]/;
   const openP=/[（「『【〔〈《(\[]$/;
