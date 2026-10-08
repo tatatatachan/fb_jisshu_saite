@@ -13,7 +13,7 @@ function layout(current){
   const areas = ["長野県","新潟県","埼玉県","群馬県","栃木県"];
   const li = (href,t)=>`<li><a href="${href}"><i></i>${t}</a></li>`;
   document.body.insertAdjacentHTML("afterbegin", `<header class="site"><div class="wrap">
-    <a class="logo" href="index.html"><img src="img/logo.png" alt="エフビー介護サービス">エフビー介護サービス<br>実習応募サイト</a>
+    <a class="logo" href="index.html"><img src="img/logo.png" alt="エフビー介護サービス"><span class="lt"><small>エフビー介護サービス</small><b>実習ひろば</b></span></a>
     <div class="hbtns"><a class="cta" href="apply.html">実習に申し込む</a>
     <button class="menubtn" id="menubtn" aria-expanded="false" aria-controls="menupanel"><svg viewBox="0 0 42 28" aria-hidden="true"><path d="M1 26C7 26 10 11 16 11S22 20 26 15S30 2 34 2S39 26 41 26Z" fill="currentColor"/></svg><span>Menu</span></button></div></div></header>
     <div class="menuveil" id="menuveil" hidden></div>

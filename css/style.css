@@ -227,3 +227,7 @@ section.alt .nums div{background:var(--cream)}
 @keyframes chpop{0%{opacity:0;transform:translateY(70px) scale(.5) rotate(-12deg)}55%{opacity:1;transform:translateY(-14px) scale(1.12) rotate(4deg)}80%{transform:translateY(3px) scale(.97) rotate(-1deg)}100%{opacity:1;transform:none}}
 .eb-in{animation:ebin .8s ease .2s both}
 @keyframes ebin{from{opacity:0;letter-spacing:.6em}to{opacity:1;letter-spacing:.3em}}
+
+.logo .lt{display:flex;flex-direction:column;font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;line-height:1.25}
+.logo .lt small{font-size:.74rem;font-weight:500;letter-spacing:.08em;color:var(--sub)}
+.logo .lt b{font-size:1.35rem;font-weight:700;letter-spacing:.12em;color:var(--mint-d)}
