@@ -277,3 +277,8 @@ section.alt .nums div{background:var(--cream)}
 @keyframes lcpop{from{opacity:0;transform:translate(-50%,-50%) scale(.4)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
 @media(max-width:860px){.learn{grid-template-columns:1fr}.lcycle{order:-1;max-width:340px}}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.lcycle.rv.in .lc{animation:none}}
+
+.learn{grid-template-areas:"b1 cy b2" "b4 cy b3"}
+.learn .lcycle{grid-area:cy}.learn .b1{grid-area:b1}.learn .b2{grid-area:b2}.learn .b3{grid-area:b3}.learn .b4{grid-area:b4}
+.lbox h3 i{display:block;font:900 .8rem Montserrat,sans-serif;font-style:normal;letter-spacing:.15em;opacity:.7}
+@media(max-width:860px){.learn{grid-template-areas:none}.learn .lcycle,.learn .b1,.learn .b2,.learn .b3,.learn .b4{grid-area:auto}}
