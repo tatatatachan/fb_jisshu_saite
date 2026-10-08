@@ -343,3 +343,6 @@ section.alt .nums div{background:var(--cream)}
 .progc li b{color:var(--mint-d)}.p5 li b{color:#c4521f}
 .pc-go{margin-top:auto;align-self:flex-end;font-weight:700;color:var(--mint-d)}.p5 .pc-go{color:#c4521f}
 @media(max-width:860px){.proggrid{grid-template-columns:1fr}.tt{grid-template-columns:1fr;padding:22px 2px}.tt-time{text-align:left;display:flex;align-items:baseline;gap:.7em;margin-bottom:.4em}.tt-time b{font-size:1.5rem}.tt-body h3{font-size:1.15rem}.tt-body ul{font-size:1rem}.progh{font-size:1.2rem;flex-wrap:wrap}}
+
+section[id],h2[id],h3[id]{scroll-margin-top:84px}
+.menupanel{overscroll-behavior:contain}

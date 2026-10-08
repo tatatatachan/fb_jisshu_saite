@@ -28,6 +28,7 @@ function layout(current){
   const set=o=>{panel.hidden=!o;veil.hidden=!o;btn.setAttribute("aria-expanded",o);document.body.classList.toggle("menu-open",o);if(o)setTimeout(()=>panel.classList.add("on"),10);else panel.classList.remove("on");};
   btn.addEventListener("click",()=>set(panel.hidden));
   veil.addEventListener("click",()=>set(false));
+  panel.addEventListener("click",e=>{const a=e.target.closest("a[href]");if(!a)return;const u=new URL(a.href,location.href);if(u.pathname===location.pathname&&u.hash)set(false);});
   document.getElementById("mx").addEventListener("click",()=>set(false));
   panel.addEventListener("click",e=>{if(e.target.closest("a"))set(false);});
   const setT=t=>{document.documentElement.dataset.menuTheme=t;panel.querySelectorAll(".mtheme button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===t));try{localStorage.setItem("menuTheme",t)}catch(e){}};
@@ -116,6 +117,6 @@ function fillFac(id,n){
 (function(){
   const els=document.querySelectorAll(".rv"); if(!els.length) return;
   if(!("IntersectionObserver" in window)){els.forEach(e=>e.classList.add("in"));return;}
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.2});
-  els.forEach(e=>io.observe(e));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.08,rootMargin:"0px 0px -6% 0px"});
+  els.forEach(e=>{if(e.getBoundingClientRect().bottom<0)e.classList.add("in");else io.observe(e);});
 })();
