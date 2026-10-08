@@ -208,18 +208,30 @@ function enhanceForm(root){
     const today=new Date();today.setHours(0,0,0,0);
     const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
     let view=new Date(today.getFullYear(),today.getMonth(),1);
-    const label=()=>{if(!inp.value){btn.innerHTML='<span class="ph">日にちを選ぶ</span>';return;}const d=new Date(inp.value+"T00:00:00");btn.innerHTML=`<span>${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${W[d.getDay()]}）</span>`;};
+    const progSel=inp.form&&inp.form.querySelector("[name=prog]");
+    const span=()=>progSel&&/5DAYS/.test(progSel.value)?5:1;
+    const hint=document.createElement("p");hint.className="dhint";wrap.appendChild(hint);
+    const fmt=d=>`${d.getMonth()+1}月${d.getDate()}日（${W[d.getDay()]}）`;
+    const addDays=(d,n)=>new Date(d.getFullYear(),d.getMonth(),d.getDate()+n);
+    const label=()=>{
+      hint.textContent=span()>1?"5DAYSは「開始日」を選んでください。そこから5日間（連続）の希望になります。日程は、あとから職員と相談して決めます。":"日程は、あとから職員と相談して決めます。";
+      if(!inp.value){btn.innerHTML=`<span class="ph">${span()>1?"開始日を選ぶ":"日にちを選ぶ"}</span>`;return;}
+      const d=new Date(inp.value+"T00:00:00");
+      btn.innerHTML=span()>1?`<span>${d.getFullYear()}年${fmt(d)} から5日間<small class="rng">〜 ${fmt(addDays(d,4))}</small></span>`:`<span>${d.getFullYear()}年${fmt(d)}</span>`;
+    };
     const draw=()=>{
       const y=view.getFullYear(),m=view.getMonth(),first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();
       const canPrev=new Date(y,m,1)>new Date(today.getFullYear(),today.getMonth(),1);
       let cells="";for(let i=0;i<first;i++)cells+="<i></i>";
       for(let d=1;d<=days;d++){const dt=new Date(y,m,d),v=iso(dt),past=dt<today,wd=dt.getDay();
-        cells+=`<button type="button" class="d${wd===0?" sun":wd===6?" sat":""}${v===iso(today)?" today":""}${v===inp.value?" sel":""}" data-v="${v}"${past?" disabled":""}>${d}</button>`;}
+        let rg="";if(inp.value&&span()>1){const st=new Date(inp.value+"T00:00:00"),en=addDays(st,span()-1);if(dt>=st&&dt<=en)rg=" rng"+(dt.getTime()===st.getTime()?" rs":"")+(dt.getTime()===en.getTime()?" re":"")+(wd===0?" rl":"")+(wd===6?" rr":"");}
+        cells+=`<button type="button" class="d${wd===0?" sun":wd===6?" sat":""}${v===iso(today)?" today":""}${v===inp.value?" sel":""}${rg}" data-v="${v}"${past?" disabled":""}>${d}</button>`;}
       pop.innerHTML=`<div class="cal-h"><button type="button" class="nav" data-n="-1" aria-label="前の月"${canPrev?"":" disabled"}>‹</button><b>${y}年${m+1}月</b><button type="button" class="nav" data-n="1" aria-label="次の月">›</button></div>
       <div class="cal-w">${W.map((w,i)=>`<span class="${i===0?"sun":i===6?"sat":""}">${w}</span>`).join("")}</div><div class="cal-g">${cells}</div>
       <div class="cal-f"><button type="button" data-a="clear">クリア</button><button type="button" data-a="today">今日</button></div>`;
     };
     label();draw();
+    if(progSel)progSel.addEventListener("change",()=>{label();draw();});
     const set=v=>{inp.value=v;inp.dispatchEvent(new Event("change",{bubbles:true}));label();draw();};
     btn.addEventListener("click",e=>{e.preventDefault();const o=!wrap.classList.contains("cs-open");closeAll(wrap);wrap.classList.toggle("cs-open",o);if(o){if(inp.value){const d=new Date(inp.value+"T00:00:00");view=new Date(d.getFullYear(),d.getMonth(),1);}draw();}});
     pop.addEventListener("click",e=>{

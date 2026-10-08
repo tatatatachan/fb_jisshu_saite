@@ -432,3 +432,13 @@ ul.cs-list li[aria-selected=true]:before{content:"";position:absolute;left:16px;
 .cal-f{display:flex;justify-content:space-between;margin-top:8px;padding-top:10px;border-top:2px dotted #dfeceb}
 .cal-f button{border:0;background:none;font:inherit;font-weight:700;color:var(--mint-d);cursor:pointer;padding:6px 10px;border-radius:99px}
 .cal-f button:hover{background:#e3f4f3}
+
+.dhint{margin:.5em 0 0;color:var(--sub);font-size:.85rem;line-height:1.7}
+.cs-btn .rng{display:inline-block;margin-left:.8em;color:#c4521f}
+.cal .d.rng{background:#fdeee4;border-radius:0;margin:2px 0;color:var(--ink)}
+.cal .d.rng.rs,.cal .d.rng.rl{border-radius:50% 0 0 50%}
+.cal .d.rng.re,.cal .d.rng.rr{border-radius:0 50% 50% 0}
+.cal .d.rng.rs.re{border-radius:50%}
+.cal .d.rng.rs{margin-left:2px}.cal .d.rng.re{margin-right:2px}
+.cal .d.sel{background:#e8743f;color:#fff;border-radius:50%}
+.cal .d.sel.rng{border-radius:50% 0 0 50%}
