@@ -31,7 +31,7 @@ function layout(current){
   document.getElementById("mclose").addEventListener("click",()=>set(false));
   panel.addEventListener("click",e=>{if(e.target.closest("a"))set(false);});
   const setT=t=>{document.documentElement.dataset.menuTheme=t;panel.querySelectorAll(".mtheme button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===t));try{localStorage.setItem("menuTheme",t)}catch(e){}};
-  let t0="teal";try{t0=localStorage.getItem("menuTheme")||"teal"}catch(e){}
+  let t0="orange";try{t0=localStorage.getItem("menuTheme")||"orange"}catch(e){}
   setT(t0);panel.querySelectorAll(".mtheme button").forEach(b=>b.addEventListener("click",()=>setT(b.dataset.t)));
   document.addEventListener("keydown",e=>{if(e.key==="Escape")set(false);});
   document.body.insertAdjacentHTML("beforeend", `<a class="fab" href="apply.html">実習<br>申込</a>
