@@ -503,3 +503,4 @@ ul.cs-list li[aria-selected=true]:before{content:"";position:absolute;left:16px;
 .fprog a{transition:transform .3s,background .3s,border-color .3s}
 .fprog a.fp1:hover{border-color:var(--mint);background:#e8f7f6}
 .fprog a.fp5:hover{border-color:var(--accent);background:#fdeee4}
+.fab .fabtx,.fab span.fabtx{margin:0!important;padding-left:.08em;line-height:1.5;text-align:center}
