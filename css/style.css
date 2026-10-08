@@ -231,3 +231,9 @@ section.alt .nums div{background:var(--cream)}
 .logo .lt{display:flex;flex-direction:column;font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;line-height:1.25}
 .logo .lt small{font-size:.74rem;font-weight:500;letter-spacing:.08em;color:var(--sub)}
 .logo .lt b{font-size:1.35rem;font-weight:700;letter-spacing:.12em;color:var(--mint-d)}
+
+.hbtns .hrun{height:52px;width:auto;transform:scaleX(-1);animation:hrun 1.5s ease-in-out infinite;margin-right:-4px;pointer-events:none}
+.hbtns:has(.cta:hover) .hrun{animation-duration:.8s}
+@keyframes hrun{0%,100%{transform:scaleX(-1) translateY(0) rotate(-3deg)}50%{transform:scaleX(-1) translateY(-5px) rotate(3deg)}}
+@media(max-width:760px){.hbtns .hrun{display:none}}
+@media(prefers-reduced-motion:reduce){.hbtns .hrun{animation:none}}
