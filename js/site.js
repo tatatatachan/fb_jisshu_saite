@@ -21,7 +21,7 @@ function layout(current){
       <p class="mttl">Contents</p>
       <h2>記事から探す</h2><ul>${cats.map(c=>li("articles.html?cat="+encodeURIComponent(c),c)).join("")}</ul>
       <h2>エリアから探す</h2><ul>${areas.map(a=>li("facilities.html",a+"の事業所")).join("")}</ul>
-      <ul class="plain"><li><a href="about.html">実習について</a></li><li><a href="index.html#flow">実習の流れ</a></li><li><a href="index.html#interview">経営者インタビュー</a></li><li><a href="faq.html">よくある質問</a></li><li><a href="privacy.html">個人情報の取扱い</a></li></ul>
+      <ul class="plain"><li><a href="about.html">実習について</a></li><li><a href="index.html#program">実習プログラム（1DAY・5DAYS）</a></li><li><a href="index.html#flow">実習の流れ</a></li><li><a href="index.html#interview">経営者インタビュー</a></li><li><a href="faq.html">よくある質問</a></li><li><a href="privacy.html">個人情報の取扱い</a></li></ul>
       <a class="mcta" href="apply.html">実習に申し込む<span>→</span></a>
       <div class="mtheme" role="group" aria-label="色の切り替え（検証用）"><span>色の検証</span><button type="button" data-t="teal">コーポレート</button><button type="button" data-t="orange">オレンジ</button></div></aside>`);
   const panel=document.getElementById("menupanel"), veil=document.getElementById("menuveil"), btn=document.getElementById("menubtn");
