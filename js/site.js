@@ -8,6 +8,7 @@ function snsLinks(){
 }
 function layout(current){
   const here = location.pathname.split("/").pop() || "index.html";
+  document.body.insertAdjacentHTML("beforeend", `<div class="pgov" aria-hidden="true"><img src="img/senpai1.png" alt=""><img src="img/senpai2.png" alt=""><img src="img/senpai3.png" alt=""></div>`);
   const cats = ["実習レポート","職員の声","人生の先輩のメッセージ","お知らせ"];
   const areas = ["長野県","新潟県","埼玉県","群馬県","栃木県"];
   const li = (href,t)=>`<li><a href="${href}"><i></i>${t}</a></li>`;
