@@ -309,3 +309,7 @@ section.alt .nums div{background:var(--cream)}
 @media(max-width:860px){#learn .learn{grid-template-columns:1fr}#learn .lcycle{order:-1}}
 #learn .lh-ttl{text-wrap:balance;line-break:strict}
 #learn .lbox li{letter-spacing:.01em}
+.mface{top:76px;left:42px;width:54px}
+.mx{width:40px;height:40px;position:relative;top:23px;right:6px}
+.mx svg{width:17px;height:17px}
+@media(max-width:640px){.mface{top:51px;left:32px}}
