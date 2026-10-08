@@ -169,3 +169,65 @@ function fillFac(id,n){
   const top=()=>window.scrollTo({top:0,left:0,behavior:"instant"});
   top();window.addEventListener("load",top);setTimeout(top,60);setTimeout(top,300);
 })();
+
+// フォームの「選択リスト」と「カレンダー」を、サイトの見た目に合わせた専用の部品にする
+function enhanceForm(root){
+  root=root||document;
+  const closeAll=ex=>document.querySelectorAll(".cs-open").forEach(e=>{if(e!==ex)e.classList.remove("cs-open");});
+  document.addEventListener("click",e=>{if(!e.target.closest(".cs"))closeAll();});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")closeAll();});
+  // --- 選択リスト
+  root.querySelectorAll("form select").forEach(sel=>{
+    const wrap=document.createElement("div");wrap.className="cs";
+    const btn=document.createElement("button");btn.type="button";btn.className="cs-btn";btn.setAttribute("aria-haspopup","listbox");
+    const list=document.createElement("ul");list.className="cs-list";list.setAttribute("role","listbox");
+    sel.parentNode.insertBefore(wrap,sel);wrap.append(btn,list,sel);sel.classList.add("cs-native");sel.tabIndex=-1;
+    const render=()=>{
+      btn.innerHTML=`<span>${esc(sel.options[sel.selectedIndex]?.text||"")}</span>`;
+      list.innerHTML=[...sel.options].map((o,i)=>`<li role="option" tabindex="-1" data-i="${i}" aria-selected="${i===sel.selectedIndex}">${esc(o.text)}</li>`).join("");
+    };
+    render();
+    new MutationObserver(render).observe(sel,{childList:true});
+    const pick=i=>{sel.selectedIndex=i;sel.dispatchEvent(new Event("change",{bubbles:true}));render();wrap.classList.remove("cs-open");btn.focus();};
+    btn.addEventListener("click",e=>{e.preventDefault();const o=!wrap.classList.contains("cs-open");closeAll(wrap);wrap.classList.toggle("cs-open",o);if(o){const s=list.querySelector("[aria-selected=true]");if(s)s.scrollIntoView({block:"nearest"});}});
+    list.addEventListener("click",e=>{e.preventDefault();const li=e.target.closest("li");if(li)pick(+li.dataset.i);});
+    wrap.addEventListener("keydown",e=>{
+      const items=[...list.children];if(!items.length)return;
+      if(["ArrowDown","ArrowUp"].includes(e.key)){e.preventDefault();if(!wrap.classList.contains("cs-open")){closeAll(wrap);wrap.classList.add("cs-open");}
+        const cur=items.indexOf(document.activeElement);const n=e.key==="ArrowDown"?Math.min(cur+1,items.length-1):Math.max(cur<0?0:cur-1,0);items[n].focus();}
+      else if((e.key==="Enter"||e.key===" ")&&document.activeElement.tagName==="LI"){e.preventDefault();pick(+document.activeElement.dataset.i);}
+    });
+  });
+  // --- カレンダー
+  root.querySelectorAll("form input[type=date]").forEach(inp=>{
+    const wrap=document.createElement("div");wrap.className="cs";
+    const btn=document.createElement("button");btn.type="button";btn.className="cs-btn cs-date";
+    const pop=document.createElement("div");pop.className="cs-list cal";
+    inp.parentNode.insertBefore(wrap,inp);wrap.append(btn,pop,inp);inp.classList.add("cs-native");inp.tabIndex=-1;
+    const W=["日","月","火","水","木","金","土"];
+    const today=new Date();today.setHours(0,0,0,0);
+    const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+    let view=new Date(today.getFullYear(),today.getMonth(),1);
+    const label=()=>{if(!inp.value){btn.innerHTML='<span class="ph">日にちを選ぶ</span>';return;}const d=new Date(inp.value+"T00:00:00");btn.innerHTML=`<span>${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${W[d.getDay()]}）</span>`;};
+    const draw=()=>{
+      const y=view.getFullYear(),m=view.getMonth(),first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();
+      const canPrev=new Date(y,m,1)>new Date(today.getFullYear(),today.getMonth(),1);
+      let cells="";for(let i=0;i<first;i++)cells+="<i></i>";
+      for(let d=1;d<=days;d++){const dt=new Date(y,m,d),v=iso(dt),past=dt<today,wd=dt.getDay();
+        cells+=`<button type="button" class="d${wd===0?" sun":wd===6?" sat":""}${v===iso(today)?" today":""}${v===inp.value?" sel":""}" data-v="${v}"${past?" disabled":""}>${d}</button>`;}
+      pop.innerHTML=`<div class="cal-h"><button type="button" class="nav" data-n="-1" aria-label="前の月"${canPrev?"":" disabled"}>‹</button><b>${y}年${m+1}月</b><button type="button" class="nav" data-n="1" aria-label="次の月">›</button></div>
+      <div class="cal-w">${W.map((w,i)=>`<span class="${i===0?"sun":i===6?"sat":""}">${w}</span>`).join("")}</div><div class="cal-g">${cells}</div>
+      <div class="cal-f"><button type="button" data-a="clear">クリア</button><button type="button" data-a="today">今日</button></div>`;
+    };
+    label();draw();
+    const set=v=>{inp.value=v;inp.dispatchEvent(new Event("change",{bubbles:true}));label();draw();};
+    btn.addEventListener("click",e=>{e.preventDefault();const o=!wrap.classList.contains("cs-open");closeAll(wrap);wrap.classList.toggle("cs-open",o);if(o){if(inp.value){const d=new Date(inp.value+"T00:00:00");view=new Date(d.getFullYear(),d.getMonth(),1);}draw();}});
+    pop.addEventListener("click",e=>{
+      e.preventDefault();
+      const n=e.target.closest("[data-n]"),d=e.target.closest(".d"),a=e.target.closest("[data-a]");
+      if(n&&!n.disabled){view=new Date(view.getFullYear(),view.getMonth()+ +n.dataset.n,1);draw();}
+      else if(d&&!d.disabled){set(d.dataset.v);wrap.classList.remove("cs-open");btn.focus();}
+      else if(a){if(a.dataset.a==="clear")set("");else set(iso(today));wrap.classList.remove("cs-open");}
+    });
+  });
+}

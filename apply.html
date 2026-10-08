@@ -19,6 +19,7 @@
 <script src="js/config.js"></script><script src="js/articles-data.js"></script><script src="js/site.js"></script><script>layout();
 FACILITIES.forEach(f=>document.querySelector("[name=fac]").insertAdjacentHTML("beforeend",`<option>${esc(f.name)}</option>`));
 if(C.applyFormUrl){document.getElementById("dummy").hidden=true;document.getElementById("real").innerHTML=`<a class="btn orange" href="${esc(C.applyFormUrl)}" target="_blank" rel="noopener">申込フォームを開く</a>`;}
+enhanceForm();
 document.getElementById("dummy").addEventListener("submit",e=>{e.preventDefault();document.getElementById("done").hidden=false;});
 document.getElementById("tel").innerHTML=C.contactTel?`電話：<a href="tel:${esc(C.contactTel)}">${esc(C.contactTel)}</a> <span class="dummy">採用担当の番号か確認中</span>`:"";
 document.getElementById("mail").innerHTML=C.contactEmail?`メール：<a href="mailto:${esc(C.contactEmail)}">${esc(C.contactEmail)}</a>`:`メール：採用担当のアドレスは確認中です <span class="dummy">準備中</span>`;
