@@ -217,7 +217,7 @@ function enhanceForm(root){
       hint.textContent=span()>1?"5DAYSは「開始日」を選んでください。そこから5日間（連続）の希望になります。日程は、あとから職員と相談して決めます。":"日程は、あとから職員と相談して決めます。";
       if(!inp.value){btn.innerHTML=`<span class="ph">${span()>1?"開始日を選ぶ":"日にちを選ぶ"}</span>`;return;}
       const d=new Date(inp.value+"T00:00:00");
-      btn.innerHTML=span()>1?`<span>${d.getFullYear()}年${fmt(d)} から5日間<small class="rng">〜 ${fmt(addDays(d,4))}</small></span>`:`<span>${d.getFullYear()}年${fmt(d)}</span>`;
+      btn.innerHTML=span()>1?`<span>${d.getFullYear()}年${fmt(d)}<span class="rng">〜 ${fmt(addDays(d,4))}</span></span>`:`<span>${d.getFullYear()}年${fmt(d)}</span>`;
     };
     const draw=()=>{
       const y=view.getFullYear(),m=view.getMonth(),first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();

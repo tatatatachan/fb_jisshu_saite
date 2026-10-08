@@ -442,3 +442,4 @@ ul.cs-list li[aria-selected=true]:before{content:"";position:absolute;left:16px;
 .cal .d.rng.rs{margin-left:2px}.cal .d.rng.re{margin-right:2px}
 .cal .d.sel{background:#e8743f;color:#fff;border-radius:50%}
 .cal .d.sel.rng{border-radius:50% 0 0 50%}
+.cs-btn .rng{font-size:inherit;font-weight:inherit;margin-left:.5em}
