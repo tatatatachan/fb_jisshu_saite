@@ -165,7 +165,7 @@ a.card:hover .thumb img{transform:scale(1.1)}
 .pk:hover .go{transform:translateX(8px) scale(1.1)}
 @media(prefers-reduced-motion:reduce){a.card:hover,.pick .pk:hover{transform:none}}
 /* ページ遷移 */
-@keyframes pgin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes pgin{from{opacity:0}to{opacity:1}}
 body{animation:pgin .55s ease both}
 html{transition:opacity .5s ease}html.leaving{opacity:0}
 @media(prefers-reduced-motion:reduce){body{animation:none}html{transition:none}}
