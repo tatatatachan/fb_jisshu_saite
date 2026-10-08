@@ -215,9 +215,9 @@ section.block.alt+section.block.alt{margin-top:0;padding-top:0}
 section.alt .nums div{background:var(--cream)}
 
 /* 申込ボタン：走る人 */
-.fab .fabrun{position:absolute;top:-52px;left:50%;width:96px;height:auto;margin-left:-48px;padding:0;background:none;border-radius:0;box-shadow:none;transform-origin:50% 100%;animation:fabrun .7s ease-in-out infinite;filter:drop-shadow(0 4px 6px rgba(0,0,0,.18))}
+.fab .fabrun{position:absolute;top:-52px;left:50%;width:96px;height:auto;margin-left:-48px;padding:0;background:none;border-radius:0;box-shadow:none;transform-origin:50% 100%;animation:fabrun 1.5s ease-in-out infinite;filter:drop-shadow(0 4px 6px rgba(0,0,0,.18))}
 .fab .fabtx{margin-top:34px}
-.fab:hover .fabrun{animation-duration:.3s}
+.fab:hover .fabrun{animation-duration:.9s}
 @keyframes fabrun{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-7px) rotate(3deg)}}
 @media(max-width:640px){.fab .fabrun{width:76px;margin-left:-38px;top:-40px}.fab .fabtx{margin-top:26px}}
 @media(prefers-reduced-motion:reduce){.fab .fabrun{animation:none}}
