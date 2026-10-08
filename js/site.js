@@ -223,7 +223,7 @@ function enhanceForm(root){
     const set=v=>{inp.value=v;inp.dispatchEvent(new Event("change",{bubbles:true}));label();draw();};
     btn.addEventListener("click",e=>{e.preventDefault();const o=!wrap.classList.contains("cs-open");closeAll(wrap);wrap.classList.toggle("cs-open",o);if(o){if(inp.value){const d=new Date(inp.value+"T00:00:00");view=new Date(d.getFullYear(),d.getMonth(),1);}draw();}});
     pop.addEventListener("click",e=>{
-      e.preventDefault();
+      e.preventDefault();e.stopPropagation();
       const n=e.target.closest("[data-n]"),d=e.target.closest(".d"),a=e.target.closest("[data-a]");
       if(n&&!n.disabled){view=new Date(view.getFullYear(),view.getMonth()+ +n.dataset.n,1);draw();}
       else if(d&&!d.disabled){set(d.dataset.v);wrap.classList.remove("cs-open");btn.focus();}
