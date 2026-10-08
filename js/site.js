@@ -37,7 +37,7 @@ function layout(current){
   document.addEventListener("keydown",e=>{if(e.key==="Escape")set(false);});
   document.body.insertAdjacentHTML("beforeend", `<a class="fab" href="apply.html"><img class="fabrun" src="img/apply-runner.png" alt=""><span class="fabtx">実習<br>申込</span></a>
   <footer class="site"><div class="wrap"><p><b>エフビー介護サービス 実習応募サイト</b></p><p>FUN LIFE! FUN LOCAL!　生きがい 持ち寄る 地域の未来</p>
-  <p>信越・北関東に7種93拠点（長野55・埼玉12・新潟11・群馬8・栃木7）</p>
+  <p>信越・北関東に7種109拠点（長野57・新潟15・埼玉15・群馬12・栃木10）</p>
   <div class="sns">${snsLinks()}</div><nav class="flinks" aria-label="フッター"><a href="apply.html">実習の申込</a><a href="privacy.html">プライバシーポリシー（個人情報の取扱い）</a><a href="https://www.fb-kaigo.co.jp/" target="_blank" rel="noopener">コーポレートサイト（エフビー介護サービス）↗</a></nav>
   <p style="opacity:.7">※ このサイトは制作中のサンプルです。記事の内容はダミーです。</p></div></footer>`);
 }
@@ -103,4 +103,12 @@ function fillFac(id,n){
   });
   const eb = document.querySelector(".hero .eyebrow");
   if (eb) eb.classList.add("eb-in");
+})();
+
+// 拠点マップ：画面に入ったら、ふわっと現れる
+(function(){
+  const fig=document.querySelector(".area-fig"); if(!fig) return;
+  if(!("IntersectionObserver" in window)){fig.classList.add("in");return;}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fig.classList.add("in");io.disconnect();}}),{threshold:.25});
+  io.observe(fig);
 })();

@@ -242,3 +242,9 @@ section.alt .nums div{background:var(--cream)}
 .hbtns .hrun{height:50px;transform:none;animation:hmeal 4s ease-in-out infinite;margin-right:2px}
 @keyframes hmeal{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 .hbtns:has(.cta:hover) .hrun{animation-duration:4s}
+
+/* 拠点マップ */
+.area-fig{margin:0;max-width:920px;margin-inline:auto;opacity:0;transform:translateY(28px) scale(.97);transition:opacity .9s ease,transform .9s ease}
+.area-fig.in{opacity:1;transform:none}
+.area-fig img{display:block;width:100%;height:auto}
+@media(prefers-reduced-motion:reduce){.area-fig{opacity:1;transform:none;transition:none}}
