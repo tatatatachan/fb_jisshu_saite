@@ -71,3 +71,21 @@ const FACILITIES = [
 function fillFac(id,n){
   document.getElementById(id).innerHTML = FACILITIES.slice(0,n).map(f=>`<div class="card"><div class="thumb ph"><img src="img/facility.jpg" alt=""></div><div class="body"><span class="label">${esc(f.type)}</span><span class="date">${esc(f.area)}</span><h3>${esc(f.name)}</h3><p style="margin:0;color:var(--sub);font-size:.9rem">${esc(f.note)}</p></div></div>`).join("");
 }
+
+// ページ遷移：ゆっくりフェード（0.8秒で現れ、0.7秒で消える）
+(function(){
+  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) return;
+  document.addEventListener("click", e => {
+    const a = e.target.closest && e.target.closest("a[href]");
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+    if (a.target === "_blank" || a.hasAttribute("download")) return;
+    const u = new URL(a.href, location.href);
+    if (u.origin !== location.origin && u.protocol !== "file:") return;
+    if (u.protocol !== location.protocol || u.pathname === location.pathname && u.search === location.search) return;
+    e.preventDefault();
+    document.documentElement.classList.add("leaving");
+    setTimeout(() => { location.href = a.href; }, 700);
+  });
+  window.addEventListener("pageshow", () => document.documentElement.classList.remove("leaving"));
+})();

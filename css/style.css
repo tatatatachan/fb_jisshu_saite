@@ -164,3 +164,8 @@ a.card:hover .thumb img{transform:scale(1.1)}
 .pick .pk:hover{transform:translateY(-10px);box-shadow:0 22px 40px rgba(0,0,0,.13)}
 .pk:hover .go{transform:translateX(8px) scale(1.1)}
 @media(prefers-reduced-motion:reduce){a.card:hover,.pick .pk:hover{transform:none}}
+/* ページ遷移 */
+@keyframes pgin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+body{animation:pgin .8s ease both}
+html{transition:opacity .7s ease}html.leaving{opacity:0}
+@media(prefers-reduced-motion:reduce){body{animation:none}html{transition:none}}
