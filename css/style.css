@@ -27,7 +27,7 @@ nav.gnav a.cta{background:var(--accent);color:#fff;font-weight:700;padding:8px 2
 .hero .c1{width:220px;height:56px;left:6%;top:18%}.hero .c2{width:160px;height:42px;right:8%;top:30%}.hero .c3{width:120px;height:32px;left:22%;top:62%}
 .hero .wrap{position:relative;z-index:1}
 .eyebrow{letter-spacing:.3em;color:var(--mint-d);font-weight:700;font-size:.8rem}
-.fun{font-size:clamp(2.4rem,9vw,5.2rem);line-height:1.15;font-weight:900;letter-spacing:.04em;margin:.5em 0 .1em;color:var(--mint-d)}
+.fun{font-family:Montserrat,"Zen Maru Gothic",sans-serif;font-size:clamp(2.4rem,9vw,5.2rem);line-height:1.1;font-weight:900;letter-spacing:.01em;margin:.5em 0 .1em;color:var(--mint-d)}
 .fun span{display:inline-block}.fun .l2{color:var(--accent)}
 .hero h1{font-size:clamp(1.2rem,3vw,1.6rem);line-height:2;margin:0 0 1.6em;font-weight:700}
 .hero p.msg{line-height:3;margin:0 auto 3em;max-width:30em}
@@ -64,7 +64,7 @@ a.card:hover{transform:translateY(-4px);transition:.2s}
 .pick a{border-radius:var(--r);padding:40px 36px;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--mint),var(--mint-d));line-height:1.9}
 .pick a:nth-child(2){background:linear-gradient(135deg,#f6a57f,var(--accent))}.pick a b{font-size:1.15rem;display:block;margin-bottom:.4em}
 /* FUN band */
-.band{overflow:hidden;white-space:nowrap;background:var(--mint);color:#fff;padding:22px 0;margin-top:calc(var(--gap)*.6);font-weight:900;font-size:clamp(1.3rem,4vw,2rem);letter-spacing:.12em}
+.band{font-family:Montserrat,"Zen Maru Gothic",sans-serif;overflow:hidden;white-space:nowrap;background:var(--mint);color:#fff;padding:22px 0;margin-top:calc(var(--gap)*.6);font-weight:900;font-size:clamp(1.3rem,4vw,2rem);letter-spacing:.12em}
 .band div{display:inline-block;animation:slide 28s linear infinite}
 .band span{margin:0 1.2em}.band span:nth-child(even){color:var(--sun)}
 @keyframes slide{to{transform:translateX(-50%)}}
