@@ -479,3 +479,19 @@ ul.cs-list li[aria-selected=true]:before{content:"";position:absolute;left:16px;
 @media(max-width:860px){.pick .pk img{top:20px;bottom:auto;right:22px;width:84px}.pick .pk .no{margin-bottom:2.4em}.pick .pk{min-height:0}}
 .wrap.wide{max-width:1400px;padding:0 clamp(16px,3vw,48px)}
 @media(max-width:860px){.pick .pk img{width:72px;top:18px;right:20px}.pick .pk .no{margin-bottom:2.8em}}
+
+/* color blocks (index) */
+section.tint{border-radius:clamp(28px,5vw,64px);margin:var(--gap) clamp(8px,2vw,28px) 0;padding:var(--gap) 0}
+section.tint+section.block{padding-top:var(--gap)}
+section.tint-m{background:#d9f1ef}
+section.tint-y{background:#fff0c4}
+section.tint-s{background:#ffe3d3}
+section.tint-d{background:linear-gradient(160deg,#10b6b1,#00807d);color:#fff}
+section.tint-d .sec,section.tint-d .sec small,section.tint-d .lead,section.tint-d p{color:#fff}
+section.tint-d .sec small{opacity:.85}
+section.tint-d .card,section.tint-d .step,section.tint-d .flow>*{color:var(--ink)}
+section.tint-d .card p,section.tint-d .step p{color:var(--sub)}
+section.tint-d .btn{background:#fff;color:var(--mint-d)}
+section.tint-d.cta .btn{background:var(--accent);color:#fff}
+section.tint .card{background:#fff}
+section.tint.alt .card,section.tint-m .card,section.tint-y .card,section.tint-s .card{background:#fff}
