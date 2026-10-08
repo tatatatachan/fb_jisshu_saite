@@ -15,17 +15,20 @@ function layout(current){
     <a class="cta hcta" href="apply.html">実習に申し込む</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel"><svg viewBox="0 0 40 28" aria-hidden="true"><path d="M2 5q4.5-5 9 0t9 0 9 0 9 0M2 14q4.5-5 9 0t9 0 9 0 9 0M2 23q4.5-5 9 0t9 0 9 0 9 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>Menu</b></button></div></header>
     <div class="menu-bg" hidden></div>
-    <aside id="menu-panel" class="menu-panel" aria-label="メニュー" hidden><div class="menu-in">
+    <aside id="menu-panel" class="menu-panel" aria-label="メニュー" hidden><svg class="menu-mt" viewBox="0 0 420 110" preserveAspectRatio="none" aria-hidden="true"><path d="M0 110V62L70 22 130 58 215 4 290 56 350 28 420 64V110Z"/></svg><div class="menu-in">
       <h2 class="menu-ttl">Contents</h2>
       <h3>記事から探す</h3><div class="mlist">${cats.map(c=>li("articles.html?cat="+encodeURIComponent(c),c)).join("")}</div>
       <h3>地域から探す</h3><div class="mlist">${areas.map(a=>li("facilities.html",a+"の事業所")).join("")}</div>
       <div class="mplain"><a href="about.html">実習について</a><a href="index.html#flow">実習の流れ</a><a href="facilities.html">事業所</a><a href="articles.html">実習レポート・記事一覧</a><a href="faq.html">よくある質問</a><a href="https://www.vision-community.jp/articles/58102d0c-9da2-4661-a0a1-ddda64720cd3" target="_blank" rel="noopener">経営者が語る、エフビー介護サービスの未来</a></div>
       <a class="mcta" href="apply.html">実習に申し込む<span>→</span></a>
-      <button class="mclose" type="button">✕ CLOSE</button></div></aside>`);
+      <div class="mtheme" role="group" aria-label="色の切り替え（検証用）"><span>色の検証</span><button type="button" data-t="teal">コーポレート</button><button type="button" data-t="orange">オレンジ</button></div><button class="mclose" type="button">✕ CLOSE</button></div></aside>`);
   const btn=document.querySelector(".menu-btn"), pan=document.getElementById("menu-panel"), bg=document.querySelector(".menu-bg");
   const set = o => { pan.hidden=bg.hidden=!o; btn.setAttribute("aria-expanded",o); document.body.style.overflow=o?"hidden":""; requestAnimationFrame(()=>document.body.classList.toggle("menu-open",o)); };
   btn.onclick=()=>set(pan.hidden); bg.onclick=()=>set(false); pan.querySelector(".mclose").onclick=()=>set(false);
   pan.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>set(false)));
+  const setT = t => { document.documentElement.dataset.menuTheme=t; pan.querySelectorAll(".mtheme button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===t)); try{localStorage.setItem("menuTheme",t)}catch(e){} };
+  let t0="teal"; try{ t0=localStorage.getItem("menuTheme")||"teal" }catch(e){}
+  setT(t0); pan.querySelectorAll(".mtheme button").forEach(b=>b.onclick=()=>setT(b.dataset.t));
   document.addEventListener("keydown",e=>{ if(e.key==="Escape") set(false); });
   document.body.insertAdjacentHTML("beforeend", `<a class="fab" href="apply.html">実習<br>申込</a>
   <footer class="site"><div class="wrap"><p><b>エフビー介護サービス 実習応募サイト</b></p><p>FUN LIFE! FUN LOCAL!　生きがい 持ち寄る 地域の未来</p>
